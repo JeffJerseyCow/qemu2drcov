@@ -1,0 +1,23 @@
+diff --git a/accel/tcg/trace-events b/accel/tcg/trace-events
+index c22ad60af7..22fd2f583c 100644
+--- a/accel/tcg/trace-events
++++ b/accel/tcg/trace-events
+@@ -7,4 +7,4 @@ disable exec_tb_nocache(void *tb, uintptr_t pc) "tb:%p pc=0x%"PRIxPTR
+ disable exec_tb_exit(void *last_tb, unsigned int flags) "tb:%p flags=0x%x"
+ 
+ # translate-all.c
+-translate_block(void *tb, uintptr_t pc, uint8_t *tb_code) "tb:%p, pc:0x%"PRIxPTR", tb_code:%p"
++translate_block(void *tb, uintptr_t pc, uint16_t size, uint8_t *tb_code) "tb:%p, pc:0x%"PRIxPTR", size:%hu, tb_code:%p"
+diff --git a/accel/tcg/translate-all.c b/accel/tcg/translate-all.c
+index 8cb8c8870e..8985aa2acd 100644
+--- a/accel/tcg/translate-all.c
++++ b/accel/tcg/translate-all.c
+@@ -1720,7 +1720,7 @@ TranslationBlock *tb_gen_code(CPUState *cpu,
+     gen_intermediate_code(cpu, tb);
+     tcg_ctx->cpu = NULL;
+ 
+-    trace_translate_block(tb, tb->pc, tb->tc.ptr);
++    trace_translate_block(tb, tb->pc, tb->size, tb->tc.ptr);
+ 
+     /* generate machine code */
+     tb->jmp_reset_offset[0] = TB_JMP_RESET_OFFSET_INVALID;
