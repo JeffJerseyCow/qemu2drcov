@@ -10,5 +10,5 @@ This tool contains a patch to QEMU which adds basic block size to the output of 
 * Run any binary under the appropriate qemu instance -- this method works with 32bit and 64bit for any architecture
   - ```qemu-x86 -d page,exec -- /bin/ls 2>&1 | qemu2drcov -n ls > ls.drcov.trace```
 
-*Note that statically compiled binaries only work with the patched version of lighthouse in this project*
+*Note that statically compiled binaries only work with the patched version of lighthouse in this project.*
 
