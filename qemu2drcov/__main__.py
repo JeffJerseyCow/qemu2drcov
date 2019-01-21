@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 import sys
 import argparse
-from core import parsePages, parseTraces, buildDrcov
+from qemu2drcov.core import parsePages, parseTraces, buildDrcov
 
 def main():
     parser = argparse.ArgumentParser('qemu2drcov')
