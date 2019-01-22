@@ -12,3 +12,9 @@ This tool contains a patch to QEMU which adds basic block size to the output of 
 
 *Note that statically compiled binaries only work with the patched version of lighthouse in this project.*
 
+## Docker
+There's a base docker image I've built that contains the latest QEMU version with my patch and qemu2drcov installed by default.
+
+```docker pull jeffjerseycow/debug-multiarch```
+
+### Examples
