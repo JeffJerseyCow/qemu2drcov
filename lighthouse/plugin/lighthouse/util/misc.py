@@ -214,7 +214,13 @@ def rebase_blocks(base, basic_blocks):
     """
     Rebase a list of basic block offsets (offset, size) to the given imagebase.
     """
-    return map(lambda x: (x[0], x[1]) if x[0] & base else (base + x[0], x[1]), basic_blocks)
+        return_map = []
+    for x in basic_blocks:
+        if x[0] & base:
+            return_map.append((x[0], x[1]))
+        else:
+            return_map.append((base + x[0], x[1]))
+    return return_map
 
 def build_hitmap(data):
     """
